@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高校生・新入生の方へ | 大阪大学応援団</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="welcome-page">
+    <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
+    <nav class="menu" id="menu" aria-label="サイトメニュー">
+        <a href="index.html">HOME</a>
+        <div class="menu-group">
+            <button class="menu-submenu-toggle" type="button" aria-expanded="false" aria-controls="aboutSubmenu">ABOUT <span aria-hidden="true">＋</span></button>
+            <div class="menu-submenu" id="aboutSubmenu" hidden>
+                <a href="about.html">ABOUT</a>
+                <a href="leader.html">LEADER</a>
+                <a href="cheer.html">CHEER</a>
+                <a href="band.html">BAND</a>
+            </div>
+        </div>
+        <a href="member.html">MEMBER</a>
+        <a href="performance.html">PERFORMANCE</a>
+        <a href="history.html">HISTORY</a>
+        <a href="activity.html">活動記録</a>
+        <a href="welcome.html">高校生・新入生の方へ</a>
+        <a href="links.html">LINKS</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <main>
+        <header class="welcome-hero">
+            <p class="section-label">FOR FUTURE STUDENTS</p>
+            <h1>高校生・新入生の方へ</h1>
+            <p>大阪大学応援団に興味を持ってくれた皆さんへ。活動や新歓企画のお知らせを掲載します。</p>
+        </header>
+
+        <section class="welcome-intro" aria-label="応援団について">
+            <article>
+                <p class="section-label">FOR HIGH SCHOOL STUDENTS</p>
+                <h2>高校生の皆さんへ</h2>
+                <p>大学生活や応援団の活動について知りたい方は、演舞演奏のご依頼やお問い合わせからお気軽にご連絡ください。</p>
+                <a href="contact.html" class="welcome-text-link">お問い合わせ <span aria-hidden="true">↗</span></a>
+            </article>
+            <article>
+                <p class="section-label">FOR NEW STUDENTS</p>
+                <h2>新入生の皆さんへ</h2>
+                <p>新歓イベント、見学・体験、説明会などの企画情報をこちらでお知らせします。気になる企画を見つけたら、詳細をご確認ください。</p>
+                <a href="#welcomePostsSection" class="welcome-text-link">企画のお知らせを見る <span aria-hidden="true">↓</span></a>
+            </article>
+        </section>
+
+        <section class="welcome-posts-section" id="welcomePostsSection" aria-labelledby="welcomePostsHeading">
+            <div class="welcome-section-heading">
+                <p class="section-label">NEW STUDENT EVENTS</p>
+                <h2 id="welcomePostsHeading">新歓・企画のお知らせ</h2>
+            </div>
+            <div id="welcomePosts" class="welcome-posts" aria-live="polite">
+                <p class="welcome-empty">企画情報を読み込んでいます。</p>
+            </div>
+        </section>
+
+        <section class="welcome-admin">
+            <button type="button" id="welcomeAdminOpen">企画を管理する</button>
+        </section>
+    </main>
+
+    <div class="welcome-admin-overlay" id="welcomeAdminOverlay" aria-hidden="true">
+        <div class="welcome-admin-panel" role="dialog" aria-modal="true" aria-labelledby="welcomeAdminTitle">
+            <button type="button" id="welcomeAdminClose" class="welcome-admin-close" aria-label="閉じる">×</button>
+            <div id="welcomePasswordArea">
+                <p class="section-label">ADMIN</p>
+                <h2 id="welcomeAdminTitle">企画情報の管理</h2>
+                <p>管理者パスワードを入力してください。</p>
+                <input type="password" id="welcomePassword" placeholder="パスワード" autocomplete="off">
+                <button type="button" id="welcomePasswordButton">管理画面へ</button>
+                <p id="welcomePasswordError" class="welcome-admin-message" role="status"></p>
+            </div>
+
+            <div id="welcomeEditorArea" hidden>
+                <p class="section-label">NEW STUDENT EVENTS</p>
+                <h2>企画を投稿・編集</h2>
+                <form id="welcomePostForm">
+                    <label for="welcomeTitle">企画名</label>
+                    <input id="welcomeTitle" type="text" maxlength="120" required>
+                    <label for="welcomeDate">開催日</label>
+                    <input id="welcomeDate" type="date">
+                    <label for="welcomeLocation">場所</label>
+                    <input id="welcomeLocation" type="text" maxlength="160" placeholder="例：豊中キャンパス">
+                    <label for="welcomeBody">内容</label>
+                    <textarea id="welcomeBody" rows="6" maxlength="5000" required></textarea>
+                    <label for="welcomeUrl">詳細ページ（任意）</label>
+                    <input id="welcomeUrl" type="url" placeholder="https://">
+                    <div class="welcome-form-actions">
+                        <button type="submit" id="welcomeSaveButton">投稿する</button>
+                        <button type="button" id="welcomeCancelEdit" hidden>編集をやめる</button>
+                    </div>
+                    <p id="welcomeSaveMessage" class="welcome-admin-message" role="status"></p>
+                </form>
+                <div class="welcome-admin-list-wrap">
+                    <h3>投稿済みの企画</h3>
+                    <div id="welcomeAdminPosts"><p>読み込み中……</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer><p>OSAKA UNIVERSITY CHEERING PARTY</p></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
